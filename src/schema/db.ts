@@ -15,7 +15,7 @@ const MONGO_CONNECTED = 1;
 
 export const connect =
 async () => {
-   let URL =`${process.env.SCHEME}://${process.env.USER_NAME}:${process.env.PASSWORD}@${process.env.HOST}${(process.env.PORT!=undefined)?':'+process.env.PORT:''}${process.env.DB_NAME}`;
+   let URL =`${process.env.SCHEME}://${process.env.USER_NAME}:${process.env.PASSWORD}@${process.env.HOST}${(process.env.PORT!=undefined)?':'+process.env.PORT:''}/${process.env.DB_NAME}`;
   // if (ignoreCredentials) {
   //   URL =`${process.env.SCHEME}://${process.env.HOST}:${process.env.PORT}/${databaseName}`;
   // }

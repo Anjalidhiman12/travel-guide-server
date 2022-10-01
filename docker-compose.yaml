@@ -23,8 +23,8 @@ services:
     image: node:16.14.2
     container_name: "traveller-api-server"
     environment:
-      - HOST=cluster0.gldhpbu.mongodb.net/test
-      - DB_NAME=TRAVELLER
+      - HOST=cluster0.gldhpbu.mongodb.net
+      - DB_NAME=testTRAVELLER
       - SCHEME=mongodb+srv
       - USER_NAME=admin
       - PASSWORD=vzq2w0aQ5gcaoZWg
