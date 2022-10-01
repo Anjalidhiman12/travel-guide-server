@@ -1,6 +1,5 @@
 import {Schema, Document, Model, model} from 'mongoose'
 import { get } from './db'
-
 export interface State{
     name:String,
     photos:String,
@@ -27,7 +26,7 @@ const StateSchemaStructure = new Schema({
     photos:{
         type:Schema.Types.String,
     }
-})
+},{ collection: 'states' })
 
 const getAllStates = async () : Promise<State[]> => {
    const dbInstance = get()
@@ -42,9 +41,16 @@ const getStateById = async (id : string) :Promise<State> => {
 }
 
 const createState = async (state : State) : Promise<State> => {
+    try{
     const dbInstance = get()
-    const createState : State = await dbInstance.model(StateModel).create(state).exec()
+    console.log("state ",state)
+    const createState : State = await dbInstance.model(StateModel).create(state)
     return createState;
+    }
+    catch(error){
+        console.log("error ",error);
+        throw error;
+    }
 }
 
 const updateState = async (id : string, state : any) : Promise<State> => {
@@ -58,6 +64,7 @@ const updateState = async (id : string, state : any) : Promise<State> => {
     const updatedState : State = await getStateById(id)
     return updatedState;
 }
+
 
 StateSchemaStructure.static('getAllStates', getAllStates)
 
