@@ -1,4 +1,4 @@
-import {Schema, ObjectId, Model, model} from 'mongoose'
+import {Schema, ObjectId, Model, model,Document} from 'mongoose'
 import { get } from './db';
 
 export interface Place{

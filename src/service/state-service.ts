@@ -14,6 +14,7 @@ class StateService {
 
     createState = async (state : State) : Promise<State> => {
         const createState : State = await StateSchema.createState(state);
+        console.log("createdState ",createState)
         return createState;
     }
 

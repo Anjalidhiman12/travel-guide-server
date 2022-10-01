@@ -13,7 +13,7 @@ export const getAllStates = async(request: Request, response: Response) => {
 
 export const getStateByID = async(request: Request, response: Response) => {
     try{
-        const stateByID :String = request.params.id;
+        const stateByID :String= request.params.id;
         let state: State = await stateServiceObject.getStateById(stateByID);
         response.status(200).json(state)
     }catch (error) {
@@ -24,9 +24,11 @@ export const getStateByID = async(request: Request, response: Response) => {
 export const createState = async(request: Request, response: Response) => {
     try{
         let statePayload :State = request.body ;
+        console.log("statePayload ",statePayload)
         let createState: State = await stateServiceObject.createState(statePayload);
         response.status(200).json(createState)
     }catch (error) {
+    
         response.status(500).json(error)
     }
 }

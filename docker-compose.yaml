@@ -1,41 +1,46 @@
+# Use root/example as user/password credentials
 version: '3.1'
 
 services:
-    traveller-mongodb-server:
-        image: mongo:latest
-        container_name: "traveller-mongodb-server"
-        environment:
-            - MONGO_DATA_DIR=/data/db
-            - MONGO_LOG_DIR=/dev/null
-            - MONGODB_USER=admin
-            - MONGODB_PASS=password
-            - MONGO_INITDB_ROOT_USERNAME=admin
-            - MONGO_INITDB_ROOT_PASSWORD=password
-        volumes:
-            - mongodb-data-volume:/data/db
-            - ./src:/var/opt
-        ports:
-            - 27017:27017
-        command: mongod --logpath=/dev/null # --quiet
 
-    traveller-api-server:
-        image: node:latest
-        container_name: "traveller-api-server"
-        environment:
-            - DB_HOST=traveller-mongodb-server
-            - DB_NAME=TRAVELLER_MANAGEMENT
-            - DB_SCHEME=mongodb
-            - DB_USER_NAME=admin
-            - DB_PASSWORD=password
-            - DB_PORT=27017
-            - MODE=standalone
-            - API_PORT=3050
-        ports:
-            - 3050:3050
-        volumes:
-            - ./:/var/opt
-        working_dir: /var/opt
-        entrypoint: npm
-        command: start
+  # traveller-mongodb-server:
+  #   image: mongo:latest
+  #   container_name: "traveller-mongodb-server"
+  #   environment:
+  #     - MONGO_DATA_DIR=/data/db
+  #     - MONGO_LOG_DIR=/dev/null
+  #     - MONGODB_USER="admin" 
+  #     - MONGODB_PASS="password"
+  #   volumes:
+  #     - mongodb-data-volume:/data/db
+  #     - ./src:/var/opt
+  #   ports:
+  #       - 27022:27017
+  #   command: mongod --logpath=/dev/null # --quiet
+
+
+  traveller-api-server:
+    image: node:16.14.2
+    container_name: "traveller-api-server"
+    environment:
+      - HOST=cluster0.gldhpbu.mongodb.net
+      - DB_NAME=testTRAVELLER
+      - SCHEME=mongodb+srv
+      - USER_NAME=admin
+      - PASSWORD=vzq2w0aQ5gcaoZWg
+    
+      #to do- get access keys from an admin user
+     
+      # - CLIENT_LOGO_BUCKET
+      - MODE=standalone
+      - API_PORT=3050
+     
+    ports:
+      - 3050:3050
+    volumes:
+      - ./:/var/opt
+    working_dir: /var/opt
+    entrypoint: npm
+    command: start
 volumes:
   mongodb-data-volume:
