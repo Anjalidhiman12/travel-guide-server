@@ -1,3 +1,4 @@
 import {stateServiceObject} from './state-service';
+import { placeServiceObject } from './place-service';
 
-export {stateServiceObject}
+export {stateServiceObject, placeServiceObject}
