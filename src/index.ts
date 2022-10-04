@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import express from "express";
 import cors from 'cors';
 import stateHandlerRouter from "./routes/state-routes";
+import placeHandlerRouter from "./routes/place-routes";
 
 export const app = express()
 
@@ -10,7 +11,8 @@ const port = process.env.API_PORT || 3050;
 app.use(cors())
 app.use(express.json())
 
-app.use("/state", stateHandlerRouter)
+app.use("/state", stateHandlerRouter);
+app.use("/place",placeHandlerRouter);
 
 export const startServer = () => {
     app.listen(port, () => {

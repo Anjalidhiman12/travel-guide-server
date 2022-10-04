@@ -5,7 +5,7 @@ export interface Place{
     name:String,
     photo:String,
     description:String,
-    stateID:ObjectId
+    stateId:ObjectId
 }
 export interface PlaceInterface extends Place, Document {
 

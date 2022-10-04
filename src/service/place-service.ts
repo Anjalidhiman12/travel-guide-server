@@ -6,7 +6,7 @@ class PlaceService {
         return places;
     }
 
-    getPkaceById = async (id: string) : Promise<Place> => {
+    getPlaceById = async (id: string) : Promise<Place> => {
         const place : Place = await PlaceSchema.getPlaceByID(id);
         return place;
     }
@@ -16,7 +16,7 @@ class PlaceService {
         return createPlace;
     }
 
-    updatePlace = async (id: String, place: any) : Promise<Place> => {
+    updatePlace = async (id: string, place: any) : Promise<Place> => {
         const updatedPlace : Place = await PlaceSchema.updatePlace(id, place);
         return updatedPlace;
     }
