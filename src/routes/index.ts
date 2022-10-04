@@ -1,3 +1,3 @@
 import stateRouter from './state-routes';
-
-export {stateRouter};
+import placeRouter from './place-routes'
+export {stateRouter,placeRouter};

@@ -1,3 +1,3 @@
 import * as StateHandler from './state-handlers';
-
-export {StateHandler}
+import * as PlaceHandler from './place-handlers';
+export {StateHandler,PlaceHandler}
